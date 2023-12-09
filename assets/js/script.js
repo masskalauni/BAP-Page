@@ -31,3 +31,25 @@ $(document).ready(function () {
     ],
   });
 });
+
+
+$(document).ready(function () {
+  $(".counter").each(function () {
+      var count = $(this);
+      var countTo = count.attr('data-count');
+      // console.log(countTo);
+      $({ countNum: 0 }).animate({
+          countNum: countTo,
+      },
+          {
+              duration: 3000,
+              easing: 'linear',
+              step: function () {
+                  count.text(Math.floor(this.countNum));
+              },
+              complete: function () {
+                  count.text(this.countNum);
+              }
+          });
+  });
+});
